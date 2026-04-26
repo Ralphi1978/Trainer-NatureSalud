@@ -1,25 +1,43 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AnimatedSection from "../components/AnimatedSection";
 import PageHero from "../components/PageHero";
+import sobreMiHeroImg from "../assets/optimized/sobre-mi-hero.webp";
+import sobreMiPortraitImg from "../assets/optimized/sobre-mi-portrait.webp";
 
-const heroImg =
-  "https://media.base44.com/images/public/69db7022e4e754e07627ce72/c35f2d563_generated_77bff7ad.png";
-const portraitImg =
-  "https://media.base44.com/images/public/69db7022e4e754e07627ce72/f158a0ba4_generated_d1fc3561.png";
-
-const credentials = [
-  "Máster de Terapeutas en Evolución Consciente",
-  "Un proyecto en evolución consciente",
-  "Programa Evolución Consciente de Paloma Cabadas",
-  ];
+const trayectoriaItems = [
+  {
+    title: "Máster para Terapeutas en Evolución Consciente",
+    description:
+      "Título otorgado por Paloma Cabadas · Creadora del programa Evolución Consciente · 2025-2026",
+  },
+  {
+    title: "Formación en psicoterapia psicoanalítica aplicada",
+    description: "E.E.P.A. · Barcelona · 2009-2014 · duración de 5 años",
+  },
+  {
+    title: "Medicina tradicional china",
+    description:
+      "Escuela de Medicina Tradicional Oriental Neijing · Pozo Amargo (Cuenca, España) · duración de 3 años",
+  },
+  {
+    title: "Nutrición y alimentación integrativa",
+    description:
+      "Centro Integral de Nuevas Tecnologías (INTEGRAL) · ENFES · España · duración de 2 años",
+  },
+];
 
 export default function SobreMi() {
+  useEffect(() => {
+    document.title = "Sobre mí | Lola Montes";
+  }, []);
+
   return (
     <div>
       <PageHero
-        image={heroImg}
-        title="Lola Montes"
-        subtitle="Terapeuta | Proyecto de Evolucion Conciente | Mollet del Valles"
+        image={sobreMiHeroImg}
+        title="Sobre mí"
+        subtitle="Terapeuta | Acompañamiento terapéutico y evolución consciente | Mollet del Vallès"
       />
 
       <section className="py-20 lg:py-32">
@@ -30,23 +48,21 @@ export default function SobreMi() {
                 Trayectoria
               </h2>
               <div className="w-16 h-px bg-primary/40 mb-8" />
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                { //Colegiada nº 19.161 (Colegio Oficial de Psicología de Cataluña,
-                //COPC). Licenciada en Psicología por la Universidad Ramon Llull
-                //- FPCEE Blanquerna. Reconocida como Psicóloga General
-                //Sanitaria. Terapeuta Gestalt. Máster en Cooperación al
-                //Desarrollo. Postgrado en Psicopatología desde la Teoría de
-                // Campo. Formada en Terapia y asesoramiento con muñecos.
-                 }   
-              </p>
-              <ul className="space-y-3">
-                {credentials.map((credential) => (
+              <ul className="space-y-6">
+                {trayectoriaItems.map((item) => (
                   <li
-                    key={credential}
-                    className="flex items-center gap-3 text-foreground"
+                    key={item.title}
+                    className="flex items-start gap-3 text-foreground"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    <span className="text-sm">{credential}</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-3" />
+                    <div>
+                      <p className="text-lg font-semibold text-foreground">
+                        {item.title}
+                      </p>
+                      <p className="text-sm text-muted-foreground leading-relaxed mt-1">
+                        {item.description}
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -54,8 +70,8 @@ export default function SobreMi() {
 
             <AnimatedSection delay={0.15}>
               <img
-                src={portraitImg}
-                alt="Lola Montes - Terapeuta en evolucion consciente"
+                src={sobreMiPortraitImg}
+                alt="Lola Montes - Terapeuta en evolución consciente"
                 className="rounded-2xl shadow-2xl shadow-foreground/10 w-full aspect-[3/4] object-cover"
               />
             </AnimatedSection>
@@ -72,39 +88,28 @@ export default function SobreMi() {
             <div className="w-16 h-px bg-primary/40 mb-8" />
             <div className="space-y-6 text-muted-foreground leading-relaxed text-base">
               <p>
-                Inquieta de espíritu. Curiosa e introspectiva. Amante de la
-                naturaleza. Interesada en toda expresión de vida, mi atención
-                sobre todo se ha centrado en la persona y en las relaciones
-                humanas.
+                Un camino de conciencia cobra sentido cuando lo caminamos
+                despiertos y conscientes de quiénes somos. Mi trabajo nace de
+                una búsqueda profunda por comprender al ser humano en todas sus
+                dimensiones. Desde temprana edad sentía la inquietud de saber
+                quién era y qué hacíamos aquí. Me hacía preguntas y siempre
+                quería encontrar respuestas.
               </p>
               <p>
-                Esto me llevó a estudiar Psicología y a iniciar un viaje de
-                retorno hacia mí misma. Un viaje de crecimiento personal en el
-                que ya llevo embarcada unos cuantos años y que es mi principal
-                fuente de conocimiento y sabiduría.
+                Por mi sensibilidad, mi mundo personal y profesional han ido
+                siempre de la mano, buscando un sentido a mi propia vida. Este
+                último año ha sido muy importante y revelador tras finalizar el
+                máster de Terapeutas en Evolución Consciente, lo que ha supuesto
+                un antes y un después para consolidar todo el conocimiento que
+                he ido integrando a lo largo del tiempo.
               </p>
               <p>
-                Consciente de que este es un recorrido del que seguir
-                nutriéndome por mucho tiempo, hoy me decido a compartir contigo
-                algo de todo lo aprendido y a acompañarte en tu viaje.
-              </p>
-              <p className="font-heading text-xl italic text-foreground">
-                Siempre con amor, respeto y proximidad.
+                Más allá de todo lo aprendido, lo que define mi trabajo es la
+                presencia, la cercanía y la capacidad de acompañar a las
+                personas en lo que están viviendo, desde una mirada consciente y
+                profunda.
               </p>
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-32">
-        <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
-          <AnimatedSection>
-            <blockquote className="font-heading text-2xl md:text-4xl font-light italic text-foreground leading-relaxed">
-              "Conócete. Acéptate. Supérate."
-            </blockquote>
-            <p className="mt-6 text-sm tracking-widest uppercase text-muted-foreground">
-              - Agustín de Hipona
-            </p>
           </AnimatedSection>
         </div>
       </section>
@@ -112,11 +117,17 @@ export default function SobreMi() {
       <section className="py-16 bg-foreground text-background text-center">
         <div className="max-w-4xl mx-auto px-6">
           <AnimatedSection>
+            <h2 className="font-heading text-3xl md:text-4xl font-light mb-4">
+              ¿Te acompaño?
+            </h2>
+            <p className="text-background/60 mb-8">
+              Un espacio de escucha, conciencia y acompañamiento personal
+            </p>
             <Link
               to="/contacto"
               className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg"
             >
-              Contacto
+              Hablemos
             </Link>
           </AnimatedSection>
         </div>

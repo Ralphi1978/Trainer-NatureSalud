@@ -1,211 +1,97 @@
-import { useState } from "react";
-import { toast } from "sonner";
-import ContactInfo from "../components/ContactInfo";
+import { useEffect } from "react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import AnimatedSection from "../components/AnimatedSection";
 import PageHero from "../components/PageHero";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import contactoHeroImg from "../assets/optimized/contacto-hero.webp";
 
-const heroImg =
-  "https://media.base44.com/images/public/69db7022e4e754e07627ce72/4e0a0be96_generated_f9cd2e22.png";
+const contactCards = [
+  {
+    title: "WhatsApp",
+    subtitle: "Escríbeme",
+    icon: MessageCircle,
+    href: "https://api.whatsapp.com/send?phone=34625183735",
+    external: true,
+  },
+  {
+    title: "Hablemos",
+    subtitle: "+34 625 183 735",
+    icon: Phone,
+    href: "tel:+34625183735",
+  },
+  {
+    title: "Email",
+    subtitle: "lolaautoconocimiento\n@gmail.com",
+    icon: Mail,
+    href: "mailto:lolaautoconocimiento@gmail.com",
+  },
+  {
+    title: "Consulta",
+    subtitle: "Rambla Nova, 42\nVer ubicación",
+    icon: MapPin,
+    href: "https://maps.google.com/?q=Rambla+Nova,+42,+Mollet+del+Vall%C3%A8s+08100",
+    external: true,
+  },
+];
 
 export default function Contacto() {
-  const [startedAt] = useState(() => Date.now());
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-    website: "",
-  });
-  const [sending, setSending] = useState(false);
-
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSending(true);
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...form,
-          startedAt,
-        }),
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(
-          data?.message ||
-            "No se pudo enviar el mensaje. Inténtalo de nuevo en unos minutos."
-        );
-      }
-
-      toast.success("Mensaje enviado correctamente. Gracias por escribir.");
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-        website: "",
-      });
-    } catch (error) {
-      const fallbackMessage =
-        import.meta.env.DEV && error.message?.includes("Failed to fetch")
-          ? "Para probar el envío real en local, ejecuta esta web con `vercel dev` o despliega una preview en Vercel."
-          : error.message ||
-            "No se pudo enviar el mensaje. Inténtalo de nuevo en unos minutos.";
-
-      toast.error(fallbackMessage);
-    } finally {
-      setSending(false);
-    }
-  };
+  useEffect(() => {
+    document.title = "Contacto | Lola Montes";
+  }, []);
 
   return (
     <div>
-      <PageHero image={heroImg} title="¿Te acompaño?" />
+      <PageHero image={contactoHeroImg} title="Contacto" />
 
       <section className="py-20 lg:py-32">
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <AnimatedSection>
-            <h2 className="font-heading text-2xl md:text-3xl font-light text-foreground mb-4">
-              ¡Hola!
-            </h2>
-            <div className="w-16 h-px bg-primary/40 mb-8" />
-            <p className="text-muted-foreground leading-relaxed mb-12">
-              Mejora la gestión de tu propia vida, adquiere mayor conciencia
-              sobre ti y responsabilízate de aquello que haces, piensas o
-              sientes. La consulta se encuentra en Barcelona y también ofrezco
-              terapias online. ¡Será un auténtico placer conocerte y
-              acompañarte!
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <AnimatedSection className="text-center max-w-3xl mx-auto">
+            <p className="font-heading text-2xl italic text-foreground/80">
+              Si sientes que este espacio es para ti, estaré encantada de
+              acompañarte
             </p>
           </AnimatedSection>
-        </div>
 
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
-            <AnimatedSection className="lg:col-span-3">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <input
-                  type="text"
-                  name="website"
-                  value={form.website}
-                  onChange={handleChange}
-                  tabIndex={-1}
-                  autoComplete="off"
-                  className="hidden"
-                  aria-hidden="true"
-                />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="name"
-                      className="text-xs tracking-widest uppercase text-muted-foreground"
-                    >
-                      Nombre *
-                    </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      required
-                      value={form.name}
-                      onChange={handleChange}
-                      className="bg-card border-border focus:border-primary"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="email"
-                      className="text-xs tracking-widest uppercase text-muted-foreground"
-                    >
-                      Correo electrónico *
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      className="bg-card border-border focus:border-primary"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="phone"
-                      className="text-xs tracking-widest uppercase text-muted-foreground"
-                    >
-                      Teléfono
-                    </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      className="bg-card border-border focus:border-primary"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="subject"
-                      className="text-xs tracking-widest uppercase text-muted-foreground"
-                    >
-                      Asunto
-                    </Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={form.subject}
-                      onChange={handleChange}
-                      className="bg-card border-border focus:border-primary"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="message"
-                    className="text-xs tracking-widest uppercase text-muted-foreground"
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            {contactCards.map((card, index) => {
+              const Icon = card.icon;
+
+              return (
+                <AnimatedSection key={card.title} delay={index * 0.06}>
+                  <a
+                    href={card.href}
+                    target={card.external ? "_blank" : undefined}
+                    rel={card.external ? "noopener noreferrer" : undefined}
+                    className="group flex h-full min-h-[190px] flex-col rounded-[2rem] border border-[#ddcfbf] bg-[linear-gradient(180deg,#fffaf2_0%,#fffdf8_100%)] px-7 py-8 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#c7b39c] hover:shadow-[0_18px_40px_rgba(120,91,60,0.10)]"
                   >
-                    Mensaje
-                  </Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    required
-                    value={form.message}
-                    onChange={handleChange}
-                    className="bg-card border-border focus:border-primary resize-none"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  disabled={sending}
-                  className="px-8 py-3 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
-                >
-                  {sending ? "Enviando..." : "Enviar mensaje"}
-                </Button>
-              </form>
-            </AnimatedSection>
-
-            <AnimatedSection className="lg:col-span-2" delay={0.1}>
-              <ContactInfo />
-            </AnimatedSection>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-[#f3e7d7] border border-[#e5d4bf] flex items-center justify-center transition-colors duration-300 group-hover:bg-[#ead8c4]">
+                        <Icon className="w-5 h-5 text-[#8e745c]" />
+                      </div>
+                      <p className="text-[11px] tracking-[0.28em] uppercase text-[#9b866f] mt-1">
+                        {card.title}
+                      </p>
+                    </div>
+                    <div className="mt-6 flex-1 flex items-start">
+                      <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line break-words">
+                        {card.subtitle}
+                      </p>
+                    </div>
+                  </a>
+                </AnimatedSection>
+              );
+            })}
           </div>
+
+          <AnimatedSection className="text-center mt-14">
+            <a
+              href="https://api.whatsapp.com/send?phone=34625183735"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-10 py-4 bg-[#9d8168] text-white rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg hover:bg-[#8d725b]"
+            >
+              Hablemos
+            </a>
+          </AnimatedSection>
         </div>
       </section>
     </div>

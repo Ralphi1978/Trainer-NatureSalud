@@ -1,26 +1,22 @@
-# NaturaySalut Landing
+# Lola Montes Web
 
 ## Desarrollo local
 
 1. Instala dependencias con `npm install`.
-2. Crea un `.env.local` a partir de `.env.example`.
-3. Para revisar la web visualmente, usa `npm run dev`.
-4. Para probar también el envío real del formulario con la función `/api/contact`, usa `vercel dev`.
+2. Para revisar la web visualmente, usa `npm run dev`.
+3. Para previsualizar una build similar a producción, usa `npm run build` y `npm run preview`.
 
-## Variables de entorno del formulario
+## Variables de entorno opcionales
+
+Si en el futuro vuelves a activar una integración de correo, puedes usar una configuración como esta:
 
 ```env
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxx
 CONTACT_TO_EMAIL=lolacoldwater@hotmail.com
-CONTACT_FROM_EMAIL=NaturaySalut <onboarding@resend.dev>
-CONTACT_SUBJECT_PREFIX=Formulario web NaturaySalut
+CONTACT_FROM_EMAIL=Lola Montes <onboarding@resend.dev>
+CONTACT_SUBJECT_PREFIX=Formulario web Lola Montes
 ```
-
-Notas:
-- `CONTACT_FROM_EMAIL` puede usar `onboarding@resend.dev` mientras el dominio no esté verificado en Resend.
-- Cuando el dominio esté verificado, conviene cambiarlo por algo como `NaturaySalut <hola@tudominio.com>`.
-- En Vercel hay que añadir estas variables en Project Settings > Environment Variables.
 
 ## Despliegue
 
-El proyecto está preparado para desplegarse en Vercel con rutas SPA mediante [vercel.json](./vercel.json) y una función serverless en [api/contact.js](./api/contact.js).
+El proyecto está preparado para desplegarse en Vercel como una SPA, con rutas configuradas en [vercel.json](./vercel.json).

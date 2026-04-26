@@ -4,28 +4,12 @@ import AnimatedSection from "./AnimatedSection";
 
 const testimonials = [
   {
-    text: "El trabajo que hice con Silvia me ayudó muchísimo no solo en el momento en el que lo hice, sino también después, a través de las herramientas que aprendí a usar gracias a ella. Es una gran profesional y una persona muy empática y cercana.",
-    author: "Cristina B.",
+    text: "He sentido un cambio profundo en mi forma de vivir y entender lo que me ocurre. Me llevo herramientas reales para mi día a día.",
+    author: "Participante · Curso terapéutico",
   },
   {
-    text: "Silvia me ha hecho sentir cómoda desde el minuto uno: tiene una gran capacidad de escucha, es muy cercana, empática y, a la vez, muy profesional. Me está ayudando a aceptar mis emociones y a gestionarlas.",
-    author: "Isabel O.",
-  },
-  {
-    text: "Acudí a Silvia en un momento de oscuridad y confusión; con su ayuda pude encontrar el origen de muchos miedos y tristezas y me llevó de la mano en el camino de autoconocerme y de amor propio.",
-    author: "Melina S.",
-  },
-  {
-    text: "Silvia me ayudó mucho cuando la ansiedad ocupaba cada espacio de mi vida. A través de la terapia que realicé con ella vi cómo la ansiedad dejó de ser la protagonista de mis días.",
-    author: "Maria E.",
-  },
-  {
-    text: "Es un gran aprendizaje compartir un viaje de introspección con Silvia tanto por su cercanía como por su experiencia. Fue un placer iniciar ese largo viaje de su mano.",
-    author: "Edu R.",
-  },
-  {
-    text: "Contacté con Silvia en un periodo de mucha inestabilidad en mi vida. Con ella entendí la importancia de hacerse las preguntas correctas y de aceptar y escuchar las emociones sin juzgarme.",
-    author: "Mizar D.",
+    text: "Un espacio muy cuidado, profundo y cercano. Me he sentido acompañada en todo momento.",
+    author: "Participante · Proceso grupal",
   },
 ];
 
@@ -37,7 +21,8 @@ export default function TestimonialCarousel() {
     []
   );
   const prev = useCallback(
-    () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length),
+    () =>
+      setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length),
     []
   );
 
@@ -57,7 +42,7 @@ export default function TestimonialCarousel() {
             "{testimonial.text}"
           </p>
           <p className="mt-6 text-sm tracking-widest uppercase text-muted-foreground">
-            - {testimonial.author}
+            {testimonial.author}
           </p>
         </div>
       </div>

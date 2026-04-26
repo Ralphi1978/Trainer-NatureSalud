@@ -1,50 +1,59 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AnimatedSection from "../components/AnimatedSection";
-import ContactInfo from "../components/ContactInfo";
 import PageHero from "../components/PageHero";
-import TestimonialCarousel from "../components/TestimonialCarousel";
-
-const heroImg =
-  "https://media.base44.com/images/public/69db7022e4e754e07627ce72/9d44d020c_generated_e674a9c2.png";
-
-const motivos = [
-  "Crecimiento personal",
-  "Ansiedad y estrés",
-  "Depresión",
-  "Terapia de pareja",
-  "Procesos de duelo",
-  "Procesos de cambio",
-  "Gestión emocional",
-  "Crisis",
-  "Bloqueos",
-];
+import ayudarHeroImg from "../assets/optimized/ayudar-hero.webp";
 
 export default function Psicoterapia() {
+  useEffect(() => {
+    document.title = "¿Cómo te puedo ayudar? | Lola Montes";
+  }, []);
+
   return (
     <div>
-      <PageHero image={heroImg} title="Psicoterapeuta en Barcelona" />
+      <PageHero
+        image={ayudarHeroImg}
+        title="¿Cómo te puedo ayudar?"
+        subtitle="Terapias individuales y acompañamiento adaptado a tu momento vital"
+      />
 
       <section className="py-20 lg:py-32">
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground text-center mb-8">
-              ¿Qué te ofrece la psicoterapia?
-            </h2>
-            <div className="w-16 h-px bg-primary/40 mx-auto mb-10" />
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <p>
-                La psicoterapia te ofrece un espacio de acompañamiento en un
-                lugar de confianza y respeto. Es un espacio donde traer aquello
-                que necesites explorar, o bien porque te preocupe, te angustie
-                o te genere algún tipo de malestar, o bien porque sencillamente
-                quieras un espacio para ti donde explorarte y conocerte más.
+            <div className="space-y-8 text-muted-foreground leading-relaxed">
+              <p className="text-xl md:text-2xl font-semibold text-foreground leading-relaxed">
+                Llevo más de 20 años acompañando a cientos de personas en su
+                proceso de sanación a todos los niveles, tanto físicos como
+                mentales y emocionales.
+              </p>
+              <p className="font-heading text-2xl italic text-foreground/80">
+                Terapias individuales · Un acompañamiento adaptado a lo que
+                necesitas en cada momento
               </p>
               <p>
-                Mejorarás la gestión de tu propia vida, adquiriendo mayor
-                conciencia sobre ti y responsabilizándote de aquello que haces,
-                piensas o sientes. Te empoderarás de tus propios recursos y
-                aprenderás nuevas herramientas para encarar la vida de un modo
-                más sano.
+                Serán sesiones individuales adaptadas a cada persona,
+                combinando diferentes enfoques según la necesidad. Un
+                acompañamiento desde un lugar de confianza y respeto, creando un
+                espacio donde poder explorar todo aquello que necesitemos. Estas
+                sesiones pueden realizarse tanto de forma presencial como
+                online, adaptándose a tu situación y momento vital.
+              </p>
+              <p>
+                La terapia en Evolución Consciente consiste en un acompañamiento
+                en el proceso de autosanación de la persona que quiere realizar
+                transformaciones en su vida.
+              </p>
+              <p>
+                Está fundamentada en los principios donde nos sanamos cuando
+                comprendemos. Comprender abre un espacio interno sanador que
+                facilita descubrir quién soy yo y por qué me pasa lo que me
+                pasa.
+              </p>
+              <p>
+                Este proceso puede integrarse con herramientas como la
+                fitoterapia aplicada, el asesoramiento en alimentación y
+                nutrición o la auriculoterapia, siempre en función de lo que
+                necesites.
               </p>
             </div>
           </AnimatedSection>
@@ -52,58 +61,25 @@ export default function Psicoterapia() {
       </section>
 
       <section className="py-20 lg:py-32 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <TestimonialCarousel />
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-32">
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <AnimatedSection>
             <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground mb-8">
-              ¿Desde qué enfoque trabajo?
+              Nutrición y alimentación consciente
             </h2>
             <div className="w-16 h-px bg-primary/40 mb-10" />
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                Utilizo un enfoque integrativo, nutriéndome de visiones
-                humanistas, gestálticas y sistémicas. Creo firmemente en el
-                potencial de las personas y en la capacidad que tienen de
-                encontrar sus propios recursos y tomar las riendas de su vida.
+                La alimentación es una parte fundamental de nuestro bienestar.
+                En este espacio puedo acompañarte a encontrar una forma de
+                alimentarte más adecuada a tu cuerpo y a tu momento vital,
+                introduciendo cambios progresivos y conscientes que te ayuden a
+                mejorar tu estado de salud.
               </p>
               <p>
-                El proceso siempre va a ir enfocado al logro de los objetivos
-                que se establezcan entre el paciente y el psicoterapeuta. La
-                terapia individual consiste en sesiones de aproximadamente una
-                hora de duración, donde se trabaja con aquello que tú traes a
-                consulta.
+                No se trata solo de qué comes, sino de cómo te cuidas, cómo te
+                escuchas y cómo habitas tu cuerpo.
               </p>
             </div>
-            <Link
-              to="/filosofia"
-              className="inline-block mt-8 text-sm font-medium text-primary hover:underline underline-offset-4 tracking-wide uppercase"
-            >
-              ¿Cómo lo llevo a cabo?
-            </Link>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-32 bg-muted/50">
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground mb-8">
-              ¿Cuánto dura una psicoterapia?
-            </h2>
-            <div className="w-16 h-px bg-primary/40 mb-10" />
-            <p className="text-muted-foreground leading-relaxed">
-              La duración de la psicoterapia es variable. No hay un número de
-              sesiones preestablecidas. Depende de lo que desees trabajar, del
-              logro de los objetivos establecidos, de si lo que traes a terapia
-              es algo concreto y puntual o de si el propósito es el de un
-              proceso de crecimiento personal. De cualquier modo, siempre serás
-              libre de finalizar la psicoterapia cuando así lo desees.
-            </p>
           </AnimatedSection>
         </div>
       </section>
@@ -111,48 +87,53 @@ export default function Psicoterapia() {
       <section className="py-20 lg:py-32">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground text-center mb-12">
-              Posibles motivos para iniciar psicoterapia
+            <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground mb-8">
+              Terapeuta en medicina tradicional china y fitoterapia
             </h2>
+            <div className="w-16 h-px bg-primary/40 mb-10" />
+            <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <p>
+                Como terapeuta, también puedo acompañarte a través de la
+                fitoterapia y la auriculoterapia, dos herramientas naturales que
+                ayudan a equilibrar el organismo y a mejorar el estado de salud
+                de forma integral.
+              </p>
+              <p>
+                Estas terapias permiten trabajar sobre el cuerpo desde un
+                enfoque respetuoso y adaptado, apoyando procesos físicos,
+                emocionales y energéticos, siempre en función de lo que
+                necesites en cada momento.
+              </p>
+              <p>
+                Todas estas herramientas están disponibles para poder crear los
+                cambios y transformaciones necesarias a todos los niveles.
+              </p>
+              <p>
+                Y a través de mis servicios recuperarás tus propios recursos y
+                aprenderás a tener nuevas herramientas para encarar la vida de
+                un modo más sano.
+              </p>
+            </div>
           </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {motivos.map((motivo, i) => (
-              <AnimatedSection key={motivo} delay={i * 0.05}>
-                <div className="flex items-center gap-3 p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors duration-300">
-                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-foreground text-sm">{motivo}</span>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-foreground text-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <AnimatedSection>
-              <h2 className="font-heading text-3xl md:text-5xl font-light mb-4">
-                ¿Te acompaño?
-              </h2>
-              <p className="text-background/60 mb-8">
-                Si te interesa hacer psicoterapia en Barcelona y/o si tienes
-                alguna duda, puedes ponerte en contacto conmigo. ¡Será un
-                auténtico placer conocerte y acompañarte!
-              </p>
-              <Link
-                to="/contacto"
-                className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg"
-              >
-                Pide una primera sesión
-              </Link>
-            </AnimatedSection>
-            <AnimatedSection delay={0.1}>
-              <div className="text-background/70">
-                <ContactInfo />
-              </div>
-            </AnimatedSection>
-          </div>
+      <section className="py-20 lg:py-28 bg-foreground text-background text-center">
+        <div className="max-w-4xl mx-auto px-6">
+          <AnimatedSection>
+            <h2 className="font-heading text-3xl md:text-4xl font-light mb-4">
+              ¿Te acompaño?
+            </h2>
+            <p className="text-background/60 mb-8">
+              Sesiones presenciales y online
+            </p>
+            <Link
+              to="/contacto"
+              className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg"
+            >
+              Hablemos
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
     </div>

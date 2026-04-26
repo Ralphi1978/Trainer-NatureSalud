@@ -34,11 +34,11 @@ export default function ContactInfo() {
           Correo
         </h4>
         <a
-          href="mailto:lolacoldwater@hotmail.com"
+          href="mailto:lolaautoconocimiento@gmail.com"
           className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors"
         >
           <Mail className="w-5 h-5" />
-          <span>lolacoldwater@hotmail.com</span>
+          <span>lolaautoconocimiento@gmail.com</span>
         </a>
       </div>
       <div>
@@ -50,7 +50,7 @@ export default function ContactInfo() {
           <span>
             Rambla Nova, 42
             <br />
-            Mollet del Valles 08100
+            Mollet del Vallès 08100
           </span>
         </div>
       </div>

@@ -1,55 +1,57 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Globe, Heart, User, Users } from "lucide-react";
 import AnimatedSection from "../components/AnimatedSection";
 import TestimonialCarousel from "../components/TestimonialCarousel";
-
-const heroImg =
-  "https://media.base44.com/images/public/69db7022e4e754e07627ce72/9d44d020c_generated_e674a9c2.png";
-const servicesImg =
-  "https://media.base44.com/images/public/69db7022e4e754e07627ce72/bfc7273a8_generated_fff3ac25.png";
+import homeHeroImg from "../assets/optimized/home-hero.webp";
+import homeTalleresBlockImg from "../assets/optimized/home-talleres-block.webp";
 
 const services = [
   {
     icon: User,
-    title: "Terapeuta",
+    title: "Lola Montes",
     description:
-      "Máster de Terapeutas en Evolución Consciente, dentro del programa Evolución Consciente de Paloma Cabadas.Después de muchos años de investigación personal en este camino, ha supuesto un antes y un después para consolidar todo el conocimiento que he ido integrando a lo largo del tiempo.",
+      "Un camino vivido con conciencia, sensibilidad y formación al servicio del acompañamiento personal.",
     link: "/sobre-mi",
     cta: "Conóceme más",
   },
   {
-    icon: Heart,
-    title: "Psicoterapia",
-    description:
-      "Mejorarás la gestión de tu vida, adquiriendo mayor conciencia y responsabilizándote de aquello que haces, piensas o sientes.",
-    link: "/psicoterapia",
-    cta: "¿Cómo te puedo ayudar?",
-  },
-  {
     icon: Globe,
-    title: "Filosofía",
+    title: "Mi enfoque",
     description:
-      "Desde una visión holística e integradora, trabajo con aquello que se va manifestando en el presente, teniendo en cuenta cuerpo, emoción y cognición.",
+      "Un enfoque consciente e integrador para comprender lo que vives y transformar tu experiencia desde dentro.",
     link: "/filosofia",
     cta: "¿Cómo trabajo?",
   },
   {
-    icon: Users,
-    title: "Talleres y cursos",
+    icon: Heart,
+    title: "Terapias individuales",
     description:
-      "Los grupos terapéuticos son complementarios a una terapia. Elige el que más se ajuste a tus necesidades, inscríbete y... ¡a crecer!",
+      "Un acompañamiento terapéutico adaptado a ti, para vivir con más claridad, equilibrio y conciencia.",
+    link: "/psicoterapia",
+    cta: "¿Cómo te puedo ayudar?",
+  },
+  {
+    icon: Users,
+    title: "Talleres",
+    description:
+      "Talleres vivenciales para profundizar en el autoconocimiento y avanzar con más conciencia, claridad y sentido.",
     link: "/talleres",
     cta: "Consúltalos",
   },
 ];
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "Lola Montes | Evolución consciente";
+  }, []);
+
   return (
     <div>
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <img
-          src={heroImg}
+          src={homeHeroImg}
           alt="Espacio terapéutico sereno"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -61,7 +63,7 @@ export default function Home() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="font-body text-sm tracking-widest uppercase text-muted-foreground mb-4"
           >
-            Un proyecto en evolución consciente
+            Acompañamiento terapéutico y evolución consciente
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -69,7 +71,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-heading text-5xl md:text-7xl lg:text-8xl font-light leading-[0.95] text-foreground max-w-2xl"
           >
-            Conócete, explora y crece
+            Un camino de conciencia y transformación
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -77,7 +79,8 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed"
           >
-            Un espacio de conocimiento y exploración para comprenderte y acompañarte en el camino hacia uno mismo.
+            Te acompaño en un proceso de autoconocimiento y transformación para
+            vivir con más claridad, conciencia y bienestar.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -89,13 +92,13 @@ export default function Home() {
               to="/contacto"
               className="group inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
             >
-              ¿Te acompaño?
+              Hablemos
             </Link>
             <Link
-              to="/contacto"
+              to="/talleres"
               className="inline-flex items-center gap-2 px-8 py-3.5 border border-foreground/20 text-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:border-primary hover:text-primary"
             >
-              Contacto
+              Ver talleres
             </Link>
           </motion.div>
         </div>
@@ -146,33 +149,34 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
               <div className="lg:w-1/2">
                 <img
-                  src={servicesImg}
-                  alt="Próximos talleres"
+                  src={homeTalleresBlockImg}
+                  alt="Programa de talleres"
                   className="rounded-2xl shadow-2xl shadow-foreground/5 w-full aspect-[4/3] object-cover"
                 />
               </div>
               <div className="lg:w-1/2">
                 <p className="text-xs tracking-widest uppercase text-primary mb-4">
-                  Próximo taller
+                  Programa de talleres
                 </p>
                 <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground mb-4">
-                  Taller de autoestima: Con buenos ojos
+                  Talleres en Evolución Consciente
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-2">
-                  <strong>Cuándo:</strong> 30/05/2026
+                  <strong>Frecuencia:</strong> un taller cada 15 días
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  <strong>Dónde:</strong> Barcelona
+                  <strong>Programa:</strong> completo de 6 talleres
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-8">
-                  Un taller que pretende acercarte a ti mismo/a para mostrarte
-                  cómo cultivar el buen amor hacia ti.
+                  Un recorrido grupal de aprendizaje y transformación para
+                  profundizar en el autoconocimiento, comprender lo que vives y
+                  avanzar con más conciencia, claridad y sentido.
                 </p>
                 <Link
                   to="/talleres"
                   className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
                 >
-                  Más información
+                  Ver programa completo
                 </Link>
               </div>
             </div>
@@ -187,17 +191,17 @@ export default function Home() {
               ¿Te acompaño?
             </h2>
             <p className="text-background/60 text-base mb-4">
-              Sesiones presenciales y online
+              Acompañamiento individual y espacios de transformación
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-10">
               <Link
                 to="/contacto"
                 className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg"
               >
-                Pide una primera visita
+                Hablemos
               </Link>
               <a
-                href="https://api.whatsapp.com/send?phone=34613008758"
+                href="https://api.whatsapp.com/send?phone=34625183735"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-3.5 border border-background/20 text-background rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:border-background/50"

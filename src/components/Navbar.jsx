@@ -6,7 +6,7 @@ const navLinks = [
   { label: "Sobre mí", path: "/sobre-mi" },
   { label: "¿Cómo trabajo?", path: "/filosofia" },
   { label: "¿Cómo te puedo ayudar?", path: "/psicoterapia" },
-  { label: "Cursos y talleres", path: "/talleres" },
+  { label: "Talleres", path: "/talleres" },
   { label: "Contacto", path: "/contacto" },
 ];
 
@@ -30,13 +30,20 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-body font-normal tracking-widest uppercase transition-colors duration-300 hover:text-primary ${
+                className={`relative pb-2 text-sm font-body font-normal tracking-widest uppercase transition-colors duration-300 hover:text-primary ${
                   location.pathname === link.path
                     ? "text-primary"
                     : "text-muted-foreground"
                 }`}
               >
                 {link.label}
+                <span
+                  className={`absolute left-0 -bottom-0.5 h-px bg-primary transition-all duration-300 ${
+                    location.pathname === link.path
+                      ? "w-full opacity-100"
+                      : "w-0 opacity-0"
+                  }`}
+                />
               </Link>
             ))}
           </div>
@@ -60,9 +67,9 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 onClick={() => setOpen(false)}
-                className={`block text-sm font-body tracking-widest uppercase transition-colors duration-300 ${
+                className={`block rounded-full px-3 py-2 text-sm font-body tracking-widest uppercase transition-colors duration-300 ${
                   location.pathname === link.path
-                    ? "text-primary"
+                    ? "bg-primary/10 text-primary"
                     : "text-muted-foreground"
                 }`}
               >

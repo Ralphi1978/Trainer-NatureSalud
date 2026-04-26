@@ -7,7 +7,10 @@ import PageNotFound from "./lib/PageNotFound";
 import Contacto from "./pages/Contacto";
 import Filosofia from "./pages/Filosofia";
 import Home from "./pages/Home";
+import AvisoLegal from "./pages/AvisoLegal";
+import PoliticaPrivacidad from "./pages/PoliticaPrivacidad";
 import Psicoterapia from "./pages/Psicoterapia";
+import ScrollToTop from "./components/ScrollToTop";
 import SobreMi from "./pages/SobreMi";
 import Talleres from "./pages/Talleres";
 
@@ -15,6 +18,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClientInstance}>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -23,6 +27,8 @@ function App() {
             <Route path="/psicoterapia" element={<Psicoterapia />} />
             <Route path="/talleres" element={<Talleres />} />
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/aviso-legal" element={<AvisoLegal />} />
+            <Route path="/politica-de-privacidad" element={<PoliticaPrivacidad />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>

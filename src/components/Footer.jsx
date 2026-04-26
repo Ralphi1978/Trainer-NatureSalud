@@ -11,9 +11,7 @@ export default function Footer() {
               Lola Montes
             </h3>
             <p className="text-sm leading-relaxed text-background/60">
-              Un proyecto de evolucion consciente
-              <br />
-              Sesiones presenciales y online.
+              Acompañamiento terapéutico y evolución consciente
             </p>
           </div>
 
@@ -22,11 +20,11 @@ export default function Footer() {
               Contacto
             </h4>
             <a
-              href="mailto:lolacoldwater@hotmail.com"
+              href="mailto:lolaautoconocimiento@gmail.com"
               className="flex items-center gap-3 text-sm text-background/70 hover:text-background transition-colors"
             >
               <Mail className="w-4 h-4" />
-              lolacoldwater@hotmail.com
+              lolaautoconocimiento@gmail.com
             </a>
             <a
               href="tel:+34625183735"
@@ -40,7 +38,7 @@ export default function Footer() {
               <span>
                 Rambla Nova, 42
                 <br />
-                Mollet del Valles 08100
+                Mollet del Vallès 08100
               </span>
             </div>
           </div>
@@ -52,8 +50,8 @@ export default function Footer() {
             {[
               { label: "Sobre mí", path: "/sobre-mi" },
               { label: "¿Cómo trabajo?", path: "/filosofia" },
-              { label: "Psicoterapia", path: "/psicoterapia" },
-              { label: "Cursos y talleres", path: "/talleres" },
+              { label: "¿Cómo te puedo ayudar?", path: "/psicoterapia" },
+              { label: "Talleres", path: "/talleres" },
               { label: "Contacto", path: "/contacto" },
             ].map((link) => (
               <Link
@@ -67,11 +65,25 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-background/10 text-center">
+        <div className="mt-16 pt-8 border-t border-background/10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <p className="text-xs text-background/40">
             © {new Date().getFullYear()} Lola Montes. Todos los derechos
             reservados.
           </p>
+          <div className="flex flex-wrap gap-6 text-xs text-background/50">
+            <Link
+              to="/aviso-legal"
+              className="hover:text-background transition-colors"
+            >
+              Aviso legal
+            </Link>
+            <Link
+              to="/politica-de-privacidad"
+              className="hover:text-background transition-colors"
+            >
+              Política de privacidad
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
