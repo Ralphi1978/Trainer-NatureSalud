@@ -1,8 +1,55 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import {
+  Apple,
+  ArrowRight,
+  HeartHandshake,
+  Leaf,
+  Users,
+} from "lucide-react";
 import AnimatedSection from "../components/AnimatedSection";
 import PageHero from "../components/PageHero";
 import ayudarHeroImg from "../assets/optimized/ayudar-hero.webp";
+
+const quickLinks = [
+  {
+    icon: Apple,
+    title: "Para empezar por lo básico",
+    subtitle: "Nutrición",
+    href: "#nutricion",
+  },
+  {
+    icon: Leaf,
+    title: "Para trabajar el cuerpo",
+    subtitle: "Terapias",
+    href: "#terapias",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Para entender lo que te pasa",
+    subtitle: "Individual",
+    href: "#individual",
+  },
+  {
+    icon: Users,
+    title: "Para profundizar",
+    subtitle: "Talleres",
+    href: "#talleres-grupo",
+  },
+];
+
+function SectionIntro({ number, title, subtitle }) {
+  return (
+    <div className="mb-10">
+      <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground">
+        {number}. {title}
+      </h2>
+      {subtitle && (
+        <p className="mt-4 text-lg italic text-muted-foreground">{subtitle}</p>
+      )}
+    </div>
+  );
+}
 
 export default function Psicoterapia() {
   useEffect(() => {
@@ -14,124 +61,241 @@ export default function Psicoterapia() {
       <PageHero
         image={ayudarHeroImg}
         title="¿Cómo te puedo ayudar?"
-        subtitle="Terapias individuales y acompañamiento adaptado a tu momento vital"
+        subtitle="Distintas formas de acompañarte según lo que necesites ahora mismo"
       />
 
-      <section className="py-20 lg:py-32">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+      <section className="py-20 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <AnimatedSection>
-            <div className="space-y-8 text-muted-foreground leading-relaxed">
-              <p className="text-xl md:text-2xl font-semibold text-foreground leading-relaxed">
-                Llevo más de 20 años acompañando a cientos de personas en su
-                proceso de sanación a todos los niveles, tanto físicos como
-                mentales y emocionales.
-              </p>
-              <p className="font-heading text-2xl italic text-foreground/80">
-                Terapias individuales · Un acompañamiento adaptado a lo que
-                necesitas en cada momento
+            <div className="space-y-8 text-lg leading-relaxed text-muted-foreground">
+              <p className="text-foreground">
+                Si sientes que algo no está bien, que hay malestar físico o
+                emocional y no sabes por dónde empezar, aquí puedes encontrar
+                diferentes formas de empezar a sentirte mejor.
               </p>
               <p>
-                Serán sesiones individuales adaptadas a cada persona,
-                combinando diferentes enfoques según la necesidad. Un
-                acompañamiento desde un lugar de confianza y respeto, creando un
-                espacio donde poder explorar todo aquello que necesitemos. Estas
-                sesiones pueden realizarse tanto de forma presencial como
-                online, adaptándose a tu situación y momento vital.
+                Cada persona está en un momento diferente. Por eso, he creado
+                distintas formas de acompañarte, según lo que necesites ahora
+                mismo.
+              </p>
+              <Link
+                to="/contacto"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-medium tracking-wide text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+              >
+                ¿No sabes por dónde empezar? Hablemos
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {quickLinks.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <AnimatedSection key={item.title} delay={index * 0.06}>
+                  <a
+                    href={item.href}
+                    className="group flex h-full rounded-[1.75rem] border border-[#e4d8c9] bg-[#fffdf8] px-6 py-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#cdbba6] hover:shadow-[0_20px_40px_rgba(40,32,24,0.05)]"
+                  >
+                    <div>
+                      <div className="mb-5 inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {item.title}
+                      </p>
+                      <p className="mt-2 font-heading text-2xl font-light text-foreground">
+                        {item.subtitle}
+                      </p>
+                    </div>
+                  </a>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="nutricion" className="border-t border-border/70 py-20 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <AnimatedSection>
+            <SectionIntro
+              number="1"
+              title="Nutrición y alimentación"
+              subtitle="Nutrición y alimentación consciente"
+            />
+            <div className="max-w-3xl space-y-5 text-lg leading-relaxed text-muted-foreground">
+              <p>
+                La forma en la que te alimentas influye directamente en cómo te
+                sientes.
               </p>
               <p>
-                La terapia en Evolución Consciente consiste en un acompañamiento
-                en el proceso de autosanación de la persona que quiere realizar
-                transformaciones en su vida.
+                Si quieres empezar a cuidarte desde lo más básico, aquí podemos
+                trabajar juntas para encontrar una alimentación más adecuada a
+                tu cuerpo y a tu momento vital.
               </p>
               <p>
-                Está fundamentada en los principios donde nos sanamos cuando
-                comprendemos. Comprender abre un espacio interno sanador que
-                facilita descubrir quién soy yo y por qué me pasa lo que me
-                pasa.
+                A través de dietas personalizadas, empezarás a sentirte menos
+                inflamada, con más energía y mayor equilibrio.
               </p>
               <p>
-                Este proceso puede integrarse con herramientas como la
-                fitoterapia aplicada, el asesoramiento en alimentación y
-                nutrición o la auriculoterapia, siempre en función de lo que
-                necesites.
+                No se trata solo de qué comes, sino de cómo te cuidas y cómo
+                empiezas a sentirte mejor en tu día a día.
               </p>
             </div>
+            <Link
+              to="/contacto"
+              className="mt-8 inline-flex items-center gap-2 text-base font-medium text-primary hover:underline underline-offset-4"
+            >
+              Más información / Reservar
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-muted/50">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+      <section id="terapias" className="border-t border-border/70 py-20 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground mb-8">
-              Nutrición y alimentación consciente
-            </h2>
-            <div className="w-16 h-px bg-primary/40 mb-10" />
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
+            <SectionIntro
+              number="2"
+              title="Terapias naturales"
+              subtitle="Medicina tradicional china, fitoterapia y auriculoterapia"
+            />
+            <div className="max-w-3xl space-y-5 text-lg leading-relaxed text-muted-foreground">
               <p>
-                La alimentación es una parte fundamental de nuestro bienestar.
-                En este espacio puedo acompañarte a encontrar una forma de
-                alimentarte más adecuada a tu cuerpo y a tu momento vital,
-                introduciendo cambios progresivos y conscientes que te ayuden a
-                mejorar tu estado de salud.
+                Si sientes que tu cuerpo está desajustado, con molestias o
+                falta de energía, estas herramientas pueden ayudarte.
               </p>
               <p>
-                No se trata solo de qué comes, sino de cómo te cuidas, cómo te
-                escuchas y cómo habitas tu cuerpo.
+                A través de técnicas naturales, trabajamos sobre el cuerpo para
+                que poco a poco recupere el equilibrio y puedas empezar a
+                sentirte mejor.
+              </p>
+              <p>
+                Es una forma suave y respetuosa de acompañar tu bienestar.
+              </p>
+              <p>
+                Muchas veces el cuerpo es el primero en mostrar que algo no
+                está bien.
               </p>
             </div>
+            <Link
+              to="/contacto"
+              className="mt-8 inline-flex items-center gap-2 text-base font-medium text-primary hover:underline underline-offset-4"
+            >
+              Más información / Reservar
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="py-20 lg:py-32">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+      <section
+        id="individual"
+        className="border-t border-border/70 bg-muted/40 py-20 lg:py-24"
+      >
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground mb-8">
-              Terapeuta en medicina tradicional china y fitoterapia
-            </h2>
-            <div className="w-16 h-px bg-primary/40 mb-10" />
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
+            <SectionIntro
+              number="3"
+              title="Terapia individual"
+              subtitle="Acompañamiento terapéutico personalizado"
+            />
+            <div className="max-w-3xl space-y-5 text-lg leading-relaxed text-muted-foreground">
               <p>
-                Como terapeuta, también puedo acompañarte a través de la
-                fitoterapia y la auriculoterapia, dos herramientas naturales que
-                ayudan a equilibrar el organismo y a mejorar el estado de salud
-                de forma integral.
+                Si hay algo en tu vida que no entiendes, si sientes ansiedad,
+                confusión o malestar y no sabes de dónde viene, este espacio es
+                para ti.
               </p>
               <p>
-                Estas terapias permiten trabajar sobre el cuerpo desde un
-                enfoque respetuoso y adaptado, apoyando procesos físicos,
-                emocionales y energéticos, siempre en función de lo que
-                necesites en cada momento.
+                En las sesiones vamos a ir a eso que te está pasando, para
+                comprenderlo y empezar a transformarlo.
               </p>
               <p>
-                Todas estas herramientas están disponibles para poder crear los
-                cambios y transformaciones necesarias a todos los niveles.
+                Sin forzar, sin tapar lo que sientes, sino entendiendo lo que
+                hay detrás.
               </p>
               <p>
-                Y a través de mis servicios recuperarás tus propios recursos y
-                aprenderás a tener nuevas herramientas para encarar la vida de
-                un modo más sano.
+                Es un acompañamiento cercano, respetuoso y adaptado a ti.
               </p>
             </div>
+            <Link
+              to="/contacto"
+              className="mt-8 inline-flex items-center gap-2 text-base font-medium text-primary hover:underline underline-offset-4"
+            >
+              Hablemos
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-foreground text-background text-center">
-        <div className="max-w-4xl mx-auto px-6">
+      <section id="talleres-grupo" className="border-t border-border/70 py-20 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-4xl font-light mb-4">
-              ¿Te acompaño?
+            <SectionIntro
+              number="4"
+              title="Talleres en grupo"
+              subtitle="Talleres de autoconocimiento"
+            />
+            <div className="max-w-3xl space-y-5 text-lg leading-relaxed text-muted-foreground">
+              <p>
+                Un espacio grupal donde trabajar en profundidad lo que te pasa,
+                acompañada de otras mujeres que están en un proceso similar.
+              </p>
+              <p>
+                A diferencia de la terapia individual, aquí seguimos un
+                recorrido paso a paso, que te permite entenderte mejor y avanzar
+                de forma más consciente en tu proceso.
+              </p>
+              <p>
+                Si sientes que quieres implicarte en un cambio más profundo,
+                este puede ser el siguiente paso.
+              </p>
+            </div>
+            <Link
+              to="/talleres"
+              className="mt-8 inline-flex items-center gap-2 text-base font-medium text-primary hover:underline underline-offset-4"
+            >
+              Ver talleres
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <section className="border-t border-border/70 py-20 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+          <AnimatedSection>
+            <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground">
+              No importa en qué punto estés.
             </h2>
-            <p className="text-background/60 mb-8">
-              Sesiones presenciales y online
+            <p className="mt-5 text-xl leading-relaxed text-muted-foreground md:text-2xl">
+              Lo importante es empezar.
+            </p>
+            <p className="mt-8 max-w-3xl mx-auto text-lg leading-relaxed text-muted-foreground">
+              Puedes hacerlo desde el cuerpo, desde el acompañamiento
+              individual o desde un proceso más profundo de autoconocimiento.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <section className="bg-foreground py-20 text-background lg:py-28">
+        <div className="max-w-4xl mx-auto px-6 text-center lg:px-10">
+          <AnimatedSection>
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-background/72 md:text-xl">
+              Si sientes que es tu momento de empezar, aquí puedes dar el
+              primer paso.
             </p>
             <Link
               to="/contacto"
-              className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg"
+              className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-medium tracking-wide text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
             >
               Hablemos
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </AnimatedSection>
         </div>
