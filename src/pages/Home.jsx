@@ -1,45 +1,25 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Globe, Heart, User, Users } from "lucide-react";
+import { ArrowRight, CircleCheckBig } from "lucide-react";
 import AnimatedSection from "../components/AnimatedSection";
-import TestimonialCarousel from "../components/TestimonialCarousel";
 import homeHeroImg from "../assets/optimized/home-hero.webp";
 import homeTalleresBlockImg from "../assets/optimized/home-talleres-block.webp";
 
-const services = [
-  {
-    icon: User,
-    title: "Lola Montes",
-    description:
-      "Un camino vivido con conciencia, sensibilidad y formación al servicio del acompañamiento personal.",
-    link: "/sobre-mi",
-    cta: "Conóceme más",
-  },
-  {
-    icon: Globe,
-    title: "Mi enfoque",
-    description:
-      "Un enfoque consciente e integrador para comprender lo que vives y transformar tu experiencia desde dentro.",
-    link: "/filosofia",
-    cta: "¿Cómo trabajo?",
-  },
-  {
-    icon: Heart,
-    title: "Terapias individuales",
-    description:
-      "Un acompañamiento terapéutico adaptado a ti, para vivir con más claridad, equilibrio y conciencia.",
-    link: "/psicoterapia",
-    cta: "¿Cómo te puedo ayudar?",
-  },
-  {
-    icon: Users,
-    title: "Talleres",
-    description:
-      "Talleres vivenciales para profundizar en el autoconocimiento y avanzar con más conciencia, claridad y sentido.",
-    link: "/talleres",
-    cta: "Consúltalos",
-  },
+const pains = [
+  "Sientes ansiedad o angustia y no sabes realmente por qué.",
+  "Tu cabeza no para y te cuesta salir de los mismos pensamientos.",
+  "Te sientes atrapada en situaciones o relaciones que te hacen sufrir.",
+  "Te cuesta tomar decisiones y dudas constantemente de ti misma.",
+  "Sabes que necesitas cambiar algo en tu vida, pero no sabes por dónde empezar.",
+];
+
+const benefits = [
+  "Sentirte más en calma contigo misma.",
+  "Dejar de vivir en bucle con tus pensamientos.",
+  "Comprender lo que hay detrás de tu sufrimiento.",
+  "Relacionarte contigo desde un lugar más sano.",
+  "Empezar a tomar decisiones con más claridad y seguridad.",
 ];
 
 export default function Home() {
@@ -49,166 +29,212 @@ export default function Home() {
 
   return (
     <div>
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[92vh] overflow-hidden">
         <img
           src={homeHeroImg}
-          alt="Espacio terapéutico sereno"
-          className="absolute inset-0 w-full h-full object-cover"
+          alt="Espacio luminoso y sereno"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full py-20">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="font-body text-sm tracking-widest uppercase text-muted-foreground mb-4"
-          >
-            Acompañamiento terapéutico y evolución consciente
-          </motion.p>
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(252,249,244,0.96)_0%,rgba(252,249,244,0.88)_38%,rgba(252,249,244,0.40)_68%,rgba(252,249,244,0.16)_100%)]" />
+        <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-7xl items-center px-6 py-24 lg:px-10">
+          <div className="max-w-3xl">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-heading text-5xl md:text-7xl lg:text-8xl font-light leading-[0.95] text-foreground max-w-2xl"
-          >
-            Un camino de conciencia y transformación
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed"
-          >
-            Te acompaño en un proceso de autoconocimiento y transformación para
-            vivir con más claridad, conciencia y bienestar.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 flex flex-wrap gap-4"
-          >
-            <Link
-              to="/contacto"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+              transition={{
+                duration: 0.8,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="max-w-3xl font-heading text-5xl font-light leading-[0.95] text-foreground md:text-7xl lg:text-8xl"
             >
-              Hablemos
-            </Link>
-            <Link
-              to="/talleres"
-              className="inline-flex items-center gap-2 px-8 py-3.5 border border-foreground/20 text-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:border-primary hover:text-primary"
+              Empieza a entender lo que te pasa y aprende a vivir lo que
+              sientes de una forma diferente
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
             >
-              Ver talleres
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-            {services.map((service, i) => (
-              <AnimatedSection key={service.title} delay={i * 0.1}>
-                <div className="group">
-                  <div className="w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center mb-6 group-hover:border-primary transition-colors duration-500">
-                    <service.icon className="w-6 h-6 text-primary/60 group-hover:text-primary transition-colors duration-500" />
-                  </div>
-                  <h3 className="font-heading text-2xl font-medium text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                    {service.description}
-                  </p>
-                  <Link
-                    to={service.link}
-                    className="text-sm font-medium text-primary hover:underline underline-offset-4 tracking-wide uppercase"
-                  >
-                    {service.cta}
-                  </Link>
-                </div>
-              </AnimatedSection>
-            ))}
+              Talleres prácticos para comprender por qué te sientes así, salir
+              del sufrimiento que te mantiene atrapada y empezar a cambiar tu
+              vida.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.3,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="mt-10 flex flex-wrap gap-4"
+            >
+              <Link
+                to="/contacto"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-medium tracking-wide text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+              >
+                Quiero entender lo que me pasa
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground">
-              Opiniones
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-5xl px-6 lg:px-10">
+          <AnimatedSection className="rounded-[2rem] border border-[#e4d8c9] bg-[#fffdf8] px-8 py-10 shadow-[0_20px_60px_rgba(40,32,24,0.05)] md:px-12 md:py-12">
+            <h2 className="font-heading text-3xl font-light text-foreground md:text-4xl">
+              Puede que te pase algo de esto...
             </h2>
-          </AnimatedSection>
-          <TestimonialCarousel />
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <AnimatedSection>
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-              <div className="lg:w-1/2">
-                <img
-                  src={homeTalleresBlockImg}
-                  alt="Programa de talleres"
-                  className="rounded-2xl shadow-2xl shadow-foreground/5 w-full aspect-[4/3] object-cover"
-                />
-              </div>
-              <div className="lg:w-1/2">
-                <p className="text-xs tracking-widest uppercase text-primary mb-4">
-                  Programa de talleres
-                </p>
-                <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground mb-4">
-                  Talleres en Evolución Consciente
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-2">
-                  <strong>Frecuencia:</strong> un taller cada 15 días
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  <strong>Programa:</strong> completo de 6 talleres
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  Un recorrido grupal de aprendizaje y transformación para
-                  profundizar en el autoconocimiento, comprender lo que vives y
-                  avanzar con más conciencia, claridad y sentido.
-                </p>
-                <Link
-                  to="/talleres"
-                  className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
-                >
-                  Ver programa completo
-                </Link>
-              </div>
-            </div>
+            <ul className="mt-8 space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+              {pains.map((pain) => (
+                <li key={pain} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                  <span>{pain}</span>
+                </li>
+              ))}
+            </ul>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-foreground text-background">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+      <section className="py-10 lg:py-16">
+        <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-5xl font-light mb-6">
-              ¿Te acompaño?
+            <h2 className="font-heading text-3xl font-light leading-relaxed text-foreground md:text-5xl">
+              Si te reconoces en esto, no te pasa nada raro.
             </h2>
-            <p className="text-background/60 text-base mb-4">
-              Acompañamiento individual y espacios de transformación
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
+              Simplemente hay cosas dentro de ti que todavía no has podido
+              comprender.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 mt-10">
-              <Link
-                to="/contacto"
-                className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:shadow-lg"
-              >
-                Hablemos
-              </Link>
-              <a
-                href="https://api.whatsapp.com/send?phone=34625183735"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-3.5 border border-background/20 text-background rounded-full text-sm tracking-wide font-medium transition-all duration-300 hover:border-background/50"
-              >
-                Escríbeme por WhatsApp
-              </a>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+            <AnimatedSection>
+              <p className="text-sm uppercase tracking-[0.24em] text-primary">
+                Beneficios
+              </p>
+              <h2 className="mt-4 font-heading text-3xl font-light text-foreground md:text-4xl">
+                A través de estos talleres podrás
+              </h2>
+              <div className="mt-8 space-y-5">
+                {benefits.map((benefit) => (
+                  <div key={benefit} className="flex items-start gap-4">
+                    <div className="mt-0.5 rounded-full bg-primary/10 p-2 text-primary">
+                      <CircleCheckBig className="h-4 w-4" />
+                    </div>
+                    <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+                      {benefit}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.12}>
+              <img
+                src={homeTalleresBlockImg}
+                alt="Espacio de autoconocimiento y transformación"
+                className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[0_24px_60px_rgba(30,24,19,0.10)]"
+              />
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-muted/40 py-14 lg:py-20">
+        <div className="mx-auto max-w-5xl px-6 lg:px-10">
+          <AnimatedSection>
+            <div className="space-y-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="text-foreground">Hola, soy Lola.</p>
+              <p>Durante muchos años, yo también me sentí así.</p>
+              <p>
+                Había momentos de ansiedad, de confusión, de no entender por
+                qué me pasaba lo que me pasaba. Sentía muchas cosas por dentro,
+                pero no sabía cómo darles sentido.
+              </p>
+              <p>
+                Buscaba respuestas. Probaba diferentes caminos, leía,
+                investigaba... pero sentía que no terminaba de encontrar algo
+                que realmente me ayudara a comprenderme de verdad.
+              </p>
+              <p>
+                Toda esta búsqueda me llevó a encontrar las herramientas que
+                hoy utilizo en mi propio proceso de autoconocimiento.
+              </p>
+              <div className="rounded-[1.75rem] border border-[#e0d4c4] bg-background px-6 py-6 shadow-[0_18px_40px_rgba(40,32,24,0.04)]">
+                <p className="text-foreground">
+                  Con el tiempo entendí algo que lo cambió todo:
+                </p>
+                <div className="mt-4 space-y-4">
+                  <div className="flex items-start gap-3">
+                    <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                    <p>No se trata solo de gestionar lo que te pasa.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                    <p>
+                      Sino de comprender realmente de dónde viene y comprenderte
+                      de verdad.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p>
+                Cuando empecé a entender lo que realmente me pasaba por dentro,
+                todo empezó a encajar y dejé de sentirme perdida.
+              </p>
+              <p>Por fin pude tomar las riendas de mi vida.</p>
+              <p>Hoy acompaño a otras mujeres en ese mismo camino.</p>
+              <p>
+                He creado estos talleres como un espacio práctico y cercano,
+                donde puedas entender lo que te sucede y empezar a generar
+                cambios reales en tu vida.
+              </p>
             </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-24">
+        <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
+          <AnimatedSection>
+            <h2 className="font-heading text-3xl font-light leading-relaxed text-foreground md:text-5xl">
+              Lo que te pasa tiene un sentido, aunque todavía no lo entiendas
+            </h2>
+            <p className="mx-auto mt-5 max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
+              Cuando empiezas a comprenderlo, puedes empezar a transformarlo.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <section className="bg-foreground py-20 text-background lg:py-28">
+        <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
+          <AnimatedSection>
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-background/72 md:text-xl">
+              Si has llegado hasta aquí, es porque una parte de ti ya está
+              buscando entender lo que te pasa.
+            </p>
+            <Link
+              to="/contacto"
+              className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-medium tracking-wide text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+            >
+              Quiero empezar mi proceso
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </AnimatedSection>
         </div>
       </section>
