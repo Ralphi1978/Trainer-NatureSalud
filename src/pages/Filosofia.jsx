@@ -4,14 +4,21 @@ import AnimatedSection from "../components/AnimatedSection";
 import PageHero from "../components/PageHero";
 import comoTrabajoHeroImg from "../assets/optimized/como-trabajo-hero.webp";
 
+const focusAreas = [
+  "Lo que sientes",
+  "Lo que estás viviendo",
+  "Lo que te pasa en el cuerpo",
+  "La comprensión de todo ello",
+];
+
 const testimonials = [
   {
-    text: "He sentido un cambio profundo en mi forma de vivir y entender lo que me ocurre. Me llevo herramientas reales para mi día a día.",
-    author: "Participante · Curso terapéutico",
+    text: "Por primera vez entendí lo que me estaba pasando y he podido aplicarlo en mi día a día.",
+    author: "Ana · Proceso terapéutico",
   },
   {
-    text: "Un espacio muy cuidado, profundo y cercano. Me he sentido acompañada en todo momento.",
-    author: "Participante · Proceso grupal",
+    text: "Un espacio muy cuidado, cercano y profundo. Me he sentido acompañada en todo momento.",
+    author: "María · Proceso grupal",
   },
 ];
 
@@ -24,8 +31,8 @@ export default function Filosofia() {
     <div>
       <PageHero
         image={comoTrabajoHeroImg}
-        title="¿Cómo trabajo?"
-        subtitle="Un enfoque consciente e integrador para comprender lo que vives y transformar tu experiencia desde dentro."
+        title="Un acompañamiento para entender lo que te pasa y empezar a cambiarlo"
+        subtitle="Trabajo contigo desde una mirada integradora que engloba mente, emoción y cuerpo, para que lo que te ocurre tenga sentido y puedas vivirlo de otra manera."
       />
 
       <section className="py-20 lg:py-32">
@@ -33,34 +40,45 @@ export default function Filosofia() {
           <AnimatedSection>
             <div className="space-y-8 text-muted-foreground leading-relaxed">
               <p className="font-heading text-2xl italic text-foreground/80">
-                Una manera de acompañar que une cuerpo, emoción y conciencia
+                No se trata solo de aliviar lo que sientes, sino de acompañarte
+                a entender lo que te pasa.
               </p>
               <p>
-                Trabajo desde una mirada integradora que entiende a la persona
-                en todas sus dimensiones. El proceso terapéutico no se centra
-                solo en aliviar un síntoma, sino en comprender qué lo sostiene y
-                qué necesita transformarse.
+                En el proceso vamos a ir directamente a lo que estás viviendo,
+                para poder comprenderlo y darte herramientas que te ayuden a
+                generar cambios. No necesitas saber por dónde empezar, lo
+                veremos juntas.
               </p>
               <p>
-                Acompaño desde la escucha, la presencia y el respeto, creando un
-                espacio donde puedas observar lo que vives con mayor claridad y
-                reconectar con tus propios recursos.
+                Acompaño desde la escucha y el respeto, creando un espacio donde
+                puedas expresarte sin juicio. Poco a poco, irás entendiendo
+                aquello que hoy te frena y te impide avanzar en tu vida.
               </p>
               <p>
-                Integro cuerpo, emoción, conciencia y comprensión para que lo
-                que vas descubriendo no se quede solo en una idea, sino que
-                pueda traducirse en cambios reales en tu vida diaria.
+                Integro una visión completa de la persona, trabajando sobre:
+              </p>
+              <ul className="grid gap-3 border-y border-border/80 py-6 sm:grid-cols-2">
+                {focusAreas.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p>
+                Para que puedas llevarlo a la práctica e integrarlo en tu día a
+                día.
               </p>
               <p>
-                Cada proceso se adapta a tu momento vital, a tu sensibilidad y a
-                aquello que necesitas transitar. La intención es que puedas
-                comprenderte mejor, recuperar equilibrio y avanzar con más
-                conciencia.
+                Cada proceso es diferente. Me adapto a tu momento, a tu forma de
+                sentir y a lo que realmente necesitas trabajar ahora. La idea es
+                que puedas atravesar tus dificultades con mayor comprensión,
+                claridad y acompañamiento.
               </p>
               <p>
-                También existen espacios grupales donde este enfoque se vive de
-                forma compartida a través de talleres y procesos de
-                autoconocimiento.
+                Este enfoque también se vive en grupo, a través de talleres
+                donde puedes profundizar en tu proceso acompañada de otras
+                personas.
               </p>
             </div>
           </AnimatedSection>
@@ -70,7 +88,7 @@ export default function Filosofia() {
       <section className="py-20 lg:py-32 bg-muted/50">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 space-y-6">
           {testimonials.map((testimonial, index) => (
-            <AnimatedSection key={index} delay={index * 0.08}>
+            <AnimatedSection key={testimonial.author} delay={index * 0.08}>
               <div className="rounded-2xl border border-border bg-background p-6 md:p-8 shadow-sm">
                 <p className="font-heading text-xl italic text-foreground/80 leading-relaxed">
                   "{testimonial.text}"
